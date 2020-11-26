@@ -16,9 +16,8 @@ def main ():
     
     #Задаем размеры и координаты центра смайлика
     x,y=200,200
-    width_smile,height_smile=350,350
-    
-    
+    width_smile,height_smile=200,200
+        
     draw_smile (x,y,width_smile,height_smile)
 
     pygame.display.update()
@@ -47,7 +46,9 @@ def draw_smile (x,y,width,height):
     
     draw_eyes (x,y,width,height)
 
-    draw_eyebrow (x,y,width,height) 
+    draw_eyebrow (x,y,width,height)
+
+    draw_lips (x,y,width,height)
 
 
 def draw_face (x,y,width,height):
@@ -66,9 +67,7 @@ def draw_eyes(x,y,width,height):
     circle(screen, BLACK, (x_left_eyes,y_left_eyes), width/2*0.19, 1)
     circle(screen, RED, (x_left_eyes, y_left_eyes), width/2*0.19-1, 0)
     circle(screen, BLACK, (x_left_eyes, y_left_eyes),width/2*0.08, 0)
-    #line(screen, BLACK, (100,120), (175,135), 15)
-
-
+  
     # Правый глаз
     circle(screen, BLACK, (x_right_eyes, y_right_eyes), width/2*0.14, 1)
     circle(screen, RED, (x_right_eyes, y_right_eyes), width/2*0.14-1, 0)
@@ -87,8 +86,14 @@ def draw_eyebrow (x,y,width,height):
     y2_right_eyes=y-height/2*0.3
 
     
-    line(screen, BLACK,(x1_left_eyes,y1_left_eyes),(x2_left_eyes,y2_left_eyes), int(width/2*0.08))
-    line(screen, BLACK,(x1_right_eyes,y1_right_eyes),(x2_right_eyes,y2_right_eyes), int(width/2*0.08))
+    line(screen, BLACK,(x1_left_eyes,y1_left_eyes),(x2_left_eyes,y2_left_eyes), int(height/2*0.08))
+    line(screen, BLACK,(x1_right_eyes,y1_right_eyes),(x2_right_eyes,y2_right_eyes), int(height/2*0.08))
+
+def draw_lips (x,y,width,height):
+    rect(screen, BLACK, (x-width/2*0.35, y+height/2*0.4, width*0.35, height*0.1))
+    pass
+
+
 
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
