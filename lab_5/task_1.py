@@ -4,6 +4,7 @@ from pygame.draw import *
 pygame.init()
 
 FPS = 30
+color = [150,150,150]
 screen = pygame.display.set_mode((400, 400))
 
 def draw_hare(surface, x, y, width, height, color):
@@ -76,9 +77,19 @@ def draw_leg(surface, x, y, width, height, color):
     ellipse(surface, color, (x - width // 2, y - height // 2, width, height))
 
 
+def addNum(seq, num):
+    '''
+    Функция увелиичивает весь спиcок на 1
+    Используется для смены цвета
+    '''
+    for i in range(len(seq)):
+        if (seq[i] + num) <=250 and (seq[i] + num) > 0:
+            seq[i] += num
+    return seq
+
 # Здесь мы будем рисовать
 
-draw_hare(screen, 200, 200, 200, 200, (150,150,150))
+draw_hare(screen, 200, 200, 200, 200, color)
 
 pygame.display.update()
 clock = pygame.time.Clock()
@@ -91,5 +102,13 @@ while not finished:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = True
-
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 4:
+                addNum(color,5)
+                draw_hare(screen, 200, 200, 200, 200, color)
+                pygame.display.update()
+            elif event.button == 5:
+                addNum(color,-5)
+                draw_hare(screen, 200, 200, 200, 200, color)
+                pygame.display.update()
 pygame.quit()
