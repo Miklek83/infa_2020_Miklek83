@@ -11,7 +11,7 @@ FPS = 1
 screen = pygame.display.set_mode((800, 600))
 score = 0
 lose = 0
-ball = 2
+ball = 4
 
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
